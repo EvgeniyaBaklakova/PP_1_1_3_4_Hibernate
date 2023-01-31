@@ -21,7 +21,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate(sql);
             System.out.println("Table was create");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -31,7 +31,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate(sql);
             System.out.println("Table was delete");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -55,7 +55,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.executeUpdate();
             System.out.println("User " + id + " was delete");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -73,7 +73,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(user);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return userList;
     }
@@ -84,7 +84,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.execute(sql);
             System.out.println("Table was clean");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
