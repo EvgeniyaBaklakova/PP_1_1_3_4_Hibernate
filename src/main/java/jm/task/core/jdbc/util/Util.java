@@ -10,31 +10,31 @@ public class Util {
     private static String userName = "root";
     private static String password = "root";
 
-        public static Connection getConnection() {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(url, userName, password);
-                System.out.println("We connected");
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-                System.out.println("We didn't connect");
+    public static Connection getConnection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, userName, password);
+            System.out.println("We connected");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            System.out.println("We didn't connect");
+        }
+        return connection;
+    }
+
+    public static void closeConnection() {
+        try {
+            if (!connection.isClosed()) {
+                connection.close();
+                System.out.println("Connection CLOSE");
             }
-            return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connection was NOT created");
         }
 
-            public static void closeConnection() {
-                try {
-                    if (!connection.isClosed() || connection == null) {
-                        connection.close();
-                        System.out.println("Connection CLOSE");
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    System.out.println("Connection was NOT created");
-                }
+    }
 
-            }
-
-        }
+}
 
 

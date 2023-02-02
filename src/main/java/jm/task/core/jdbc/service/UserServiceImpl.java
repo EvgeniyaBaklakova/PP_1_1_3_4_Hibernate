@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService {
     public void createUsersTable() throws SQLException {
         userDao.createUsersTable();
     }
-
     public void dropUsersTable() {
         userDao.dropUsersTable();
     }
