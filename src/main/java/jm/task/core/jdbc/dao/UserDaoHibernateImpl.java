@@ -64,8 +64,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             try {
-                User user = session.get(User.class, id);
-                session.delete(user);
+                session.createQuery("DELETE User WHERE id = :id").setParameter("id", id).executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e) {
                 session.getTransaction().rollback();
@@ -73,7 +72,6 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         }
     }
-
     @Override
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
